@@ -6,11 +6,11 @@ myHeader = {
 }
 
 
-def GetServerUrl(pageNum):
+def getServerUrl(pageNum):
     url = "http://www.mcbbs.net/forum-server-" + str(pageNum) + ".html"
     resp = requests.get(url, headers=myHeader)
     contain = BeautifulSoup(resp.text, "html.parser")
     firstFind = contain.find("table", attrs={"summary": "forum_179"})
-    secondFind = firstFind.find_all("a", attrs={"onclick": "atarget(this)"})
+    secondFind = firstFind.find_all("tbody")
     resp.close()
     return secondFind
