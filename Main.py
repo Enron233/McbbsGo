@@ -4,7 +4,7 @@ import time
 import GetServerGroup
 import GetServerList
 
-r = open("ServerList.txt", mode="w", encoding="UTF-8")
+
 f = open("ServerList.txt", mode="a", encoding="UTF-8")
 
 
@@ -35,12 +35,10 @@ start = int(input("请输入起始页："))
 time.sleep(1)
 end = int(input("请输入终止页："))
 print(f"开始爬取服务器板块第{start}页到{end}页的服务器帖")
-r.write("此次数据爬取时间：" + datetime.datetime.now().strftime('%Y-%m-%d %M:%S'))
-r.close()
 while start <= end:
     getServerInfo(start)
     print(f"第{start}页服务器信息爬取成功")
     start = start + 1
     continue
-input("爬取成功，已经保存到本程序同目录ServerList.txt中")
-
+f.close()
+input("爬取成功，已经保存到本程序同目录ServerList.txt中，如需再次使用请删除目录中ServerList.txt")
